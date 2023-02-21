@@ -1,0 +1,46 @@
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url ="github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      # build with your own instance of nixpkgs
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+  };
+
+  outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }: {
+    nixosConfigurations.Compootah = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [ 
+
+        ./sys/boot.nix
+        ./sys/locale.nix
+        ./sys/pkgs.nix
+        ./sys/etc.nix
+        ./sys/users.nix
+        ./sys/hardware-configuration.nix
+        ./desktop/generic.nix
+        ./desktop/gnome.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useUserPackages = true;
+          home-manager.users.edvin = import ./home/home.nix;
+        }
+        hyprland.nixosModules.default
+        { programs.hyprland = {
+            enable = true; 
+            nvidiaPatches = true;
+          };
+        } 
+      ];
+    };
+  };
+}
