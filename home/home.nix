@@ -81,17 +81,11 @@
     boxes
 
     # Stooooph
-    xmobar
-    eww-wayland
-    dmenu
-    xwallpaper
     hyprpaper
     pscircle
     libsForQt5.qtstyleplugin-kvantum
-    dunst
     flameshot
     lxappearance 
-    xlockmore
     wine
     playerctl
     filezilla

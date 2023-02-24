@@ -20,6 +20,7 @@
       system = "x86_64-linux";
       modules = [ 
 
+        # Importing all the other garbage
         ./sys/boot.nix
         ./sys/locale.nix
         ./sys/pkgs.nix
@@ -28,6 +29,7 @@
         ./sys/hardware-configuration.nix
         ./desktop/generic.nix
         ./desktop/gnome.nix
+        ./desktop/xmonad.nix
 
         home-manager.nixosModules.home-manager
         {
