@@ -1,15 +1,12 @@
-{ lib, config, pkgs, commands, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   programs.fish = {
     enable = true;
 
     shellAliases = {
-      ed  = "nvim";
       ll = "ls -la";
-      hmrs = "home-manager switch";
       "..." = "cd ../..";
-      pkgdir = "/home/edvin/.config/nixpkgs/";
     };
 
     shellInit = "neofetch";

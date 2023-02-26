@@ -8,11 +8,12 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
  
   # Nvidia
-  boot.initrd.kernelModules = [ "nvidia" ];
   hardware = {
     opengl.enable = true;
     opengl.driSupport32Bit = true;
-    nvidia.modesetting.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+    };
   };
 
   # Enable networking

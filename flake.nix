@@ -12,10 +12,12 @@
       # build with your own instance of nixpkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gbar.url = "github:Eken-beep/gBar";
     
   };
 
-  outputs = inputs @ { self, nixpkgs, hyprland, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: {
     nixosConfigurations.Compootah = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
@@ -42,6 +44,12 @@
             nvidiaPatches = true;
           };
         } 
+        {
+          # Flake packages
+          environment.systemPackages = [
+            inputs.gbar
+          ];
+        }
       ];
     };
   };

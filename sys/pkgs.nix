@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -13,12 +13,10 @@
     xdotool
     piper
     flameshot
-    dmenu
     xterm
-    hello
   ];
 
-    # Fonts
+  # Fonts
   fonts.fonts = with pkgs; [
     noto-fonts
     noto-fonts-cjk
