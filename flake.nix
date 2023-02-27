@@ -17,7 +17,7 @@
     
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, hyprland, gbar, ... }@inputs: {
     nixosConfigurations.Compootah = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
@@ -51,6 +51,7 @@
                 ./home/dunst.nix 
                 ./home/fish.nix
                 ./home/git.nix 
+                ./home/gBar.nix
                 ./home/kitty.nix 
                 ./home/neovim.nix 
                 ./home/picom.nix 

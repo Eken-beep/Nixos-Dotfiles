@@ -1,0 +1,5 @@
+{
+  flakePackages.gBar = {
+    enable = true;
+  };
+}
