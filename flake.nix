@@ -47,7 +47,7 @@
         {
           # Flake packages
           environment.systemPackages = [
-            inputs.gbar
+            inputs.gbar.defaultPackage.x86_64-linux
           ];
         }
       ];
