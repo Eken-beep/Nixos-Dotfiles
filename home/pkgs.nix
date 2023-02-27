@@ -1,35 +1,7 @@
-{ config, pkgs, ... }: {
-  # Home manager version
-  home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
+{ pkgs, ... }:
+{
   # Allow unfree software
   nixpkgs.config.allowUnfree = true;
-
-  # Enabling playerctl to control videos and music with the mediakeys
-  services.playerctld.enable = true;
-
-  nixpkgs.overlays = [
-    (self: super: {
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
-
-  # Imports of modules
-  imports = [
-      ./dunst.nix 
-      ./fish.nix
-      ./git.nix 
-      ./kitty.nix 
-      ./neovim.nix 
-      ./picom.nix 
-      ./rofi.nix
-      ./waybar.nix
-  ];
 
   # Programs
   home.packages = with pkgs; [

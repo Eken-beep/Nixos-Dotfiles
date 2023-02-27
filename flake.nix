@@ -36,8 +36,31 @@
         home-manager.nixosModules.home-manager
         {
           home-manager.useUserPackages = true;
-          home-manager.users.edvin = import ./home/home.nix;
+          home-manager.users.edvin = {
+            # Home manager version
+            home.stateVersion = "22.05";
+     
+            # Let Home Manager install and manage itself.
+            programs.home-manager.enable = true;
+     
+            # Enabling playerctl to control videos and music with the mediakeys
+            services.playerctld.enable = true;
+
+            # Imports of modules
+            imports = [
+                ./home/dunst.nix 
+                ./home/fish.nix
+                ./home/git.nix 
+                ./home/kitty.nix 
+                ./home/neovim.nix 
+                ./home/picom.nix 
+                ./home/pkgs.nix
+                ./home/rofi.nix
+                ./home/waybar.nix
+            ];
+          };
         }
+
         hyprland.nixosModules.default
         { programs.hyprland = {
             enable = true; 
