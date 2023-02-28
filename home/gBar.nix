@@ -1,5 +1,5 @@
 {
-  flakePackages.gBar = {
+  wayland.windowManager.gBar = {
     enable = true;
   };
 }

@@ -70,6 +70,11 @@
           command = "rls";
           filetypes = [ "rust" ];
         };
+
+        c = {
+          command = "ccls";
+          filetypes = [ "c" "cpp" ];
+        };
       };
     };
     extraConfig = "lua << EOF\n" + builtins.readFile ./other/init.lua + "\nEOF";

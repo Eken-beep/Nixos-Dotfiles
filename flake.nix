@@ -13,11 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    gbar.url = "github:Eken-beep/gBar";
+    #gbar.url = "github:Eken-beep/gBar";
+    gBar.url = "github:scorpion-26/gBar";
     
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, gbar, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, hyprland, gBar, ... }@inputs: {
     nixosConfigurations.Compootah = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [ 
@@ -51,7 +52,7 @@
                 ./home/dunst.nix 
                 ./home/fish.nix
                 ./home/git.nix 
-                ./home/gBar.nix
+                #./home/gBar.nix
                 ./home/kitty.nix 
                 ./home/neovim.nix 
                 ./home/picom.nix 
@@ -68,10 +69,18 @@
             nvidiaPatches = true;
           };
         } 
+
+        gBar.nixosModules.default 
+        {
+          programs.gBar = {
+            enable = true;
+          };
+        }
+
         {
           # Flake packages
           environment.systemPackages = [
-            inputs.gbar.defaultPackage.x86_64-linux
+            gBar.defaultPackage.x86_64-linux
           ];
         }
       ];
