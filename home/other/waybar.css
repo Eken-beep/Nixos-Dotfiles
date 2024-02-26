@@ -1,0 +1,70 @@
+* {
+  border: 0px;
+  border-radius: 20px;
+  font-family: FiraCode Nerd Font;
+  font-size: 24px;
+}
+
+window#waybar {
+    background: rgba(33, 40, 47, 0.5);
+    border: none;
+    color: #ced6e1;
+}
+
+tooltip {
+  background: #21282f;
+  border: 1px solid #58c0ca;
+}
+
+tooltip label {
+  color: #ced6e1;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #ced6e1;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.active, #workspaces button.visible {
+    background: transparent;
+    border-bottom: none;
+    color: #58c0ca;
+}
+
+#custom-space {
+    font-size: 10px;
+}
+
+#cpu, #memory {
+    padding: 20px 0px 20px 0px;
+    background-color: #21282f;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid white;
+}
+
+#clock {
+    background-color: #21282f;
+    padding: 5px 12px;
+}
+
+#battery {
+    background-color: #ffffff;
+    color: black;
+}
+
+#battery.charging {
+    color: white;
+    background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}

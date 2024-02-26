@@ -1,0 +1,305 @@
+* {
+  all: unset;
+  font-family: "FiraCode Nerd Font";
+}
+
+.bar, tooltip {
+  background-color: #1e1e2e;
+  border-radius: 0px;
+  border-bottom-color: #89b4fa;
+  border-bottom-width: 2px;
+}
+
+.right {
+  margin-right: 10px;
+  border-radius: 16px;
+}
+
+.time-text {
+  font-size: 16px;
+  color: #cdd6f4;
+}
+
+.reboot-button {
+  font-size: 28px;
+  margin-right: 6px;
+  color: #eba0ac;
+}
+
+.sleep-button {
+  font-size: 28px;
+  color: #eba0ac;
+}
+
+.exit-button {
+  font-size: 28px;
+  color: #eba0ac;
+}
+
+.power-button {
+  font-size: 28px;
+  color: #f38ba8;
+}
+
+.power-box-expand {
+  margin-right: 6px;
+}
+
+.audio-icon {
+  font-size: 24px;
+  color: #fab387;
+  margin-right: 12px;
+}
+
+.bt-num {
+  font-size: 16px;
+  color: #89b4fa;
+  margin-left: -6px;
+}
+
+.bt-label-on {
+  font-size: 20px;
+  color: #89b4fa;
+  margin-right: 6px;
+}
+
+.bt-label-off {
+  font-size: 24px;
+  color: #89b4fa;
+  margin-right: 6px;
+}
+
+.bt-label-connected {
+  font-size: 28px;
+  color: #89b4fa;
+  margin-right: 6px;
+}
+
+.disk-util-progress {
+  color: #cba6f7;
+  background-color: #44475a;
+  font-size: 16px;
+}
+
+.disk-data-text {
+  color: #cba6f7;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.vram-util-progress {
+  color: #ffb86c;
+  background-color: #44475a;
+}
+
+.vram-data-text {
+  color: #ffb86c;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.ram-util-progress {
+  color: #f9e2fa;
+  background-color: #44475a;
+}
+
+.ram-data-text {
+  color: #f9e2fa;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.gpu-util-progress {
+  color: #8be9fd;
+  background-color: #44475a;
+}
+
+.gpu-data-text {
+  color: #8be9fd;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.cpu-util-progress {
+  color: #a6e3a1;
+  background-color: #44475a;
+  font-size: 16px;
+}
+
+.cpu-data-text {
+  color: #a6e3a1;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.battery-util-progress {
+  color: #ff79c6;
+  background-color: #44475a;
+  font-size: 16px;
+}
+
+.battery-data-text {
+  color: #ff79c6;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.ws-dead {
+  color: #181825;
+  font-size: 16px;
+}
+
+.ws-inactive {
+  color: #585b70;
+  font-size: 16px;
+}
+
+.ws-visible {
+  color: #b4befe;
+  font-size: 16px;
+}
+
+.ws-current {
+  color: #89dceb;
+  font-size: 16px;
+}
+
+.ws-active {
+  color: #89dceb;
+  font-size: 16px;
+}
+
+@keyframes connectanim {
+  from {
+    background-image: radial-gradient(circle farthest-side at center, #1793D1 0%, transparent 0%, transparent 100%);
+  }
+  to {
+    background-image: radial-gradient(circle farthest-side at center, #1793D1 0%, #1793D1 100%, transparent 100%);
+  }
+}
+@keyframes disconnectanim {
+  from {
+    background-image: radial-gradient(circle farthest-side at center, transparent 0%, #1793D1 0%, #1793D1 100%);
+  }
+  to {
+    background-image: radial-gradient(circle farthest-side at center, transparent 0%, transparent 100%, #1793D1 100%);
+  }
+}
+@keyframes scanonanim {
+  from {
+    color: #f1fa8c;
+  }
+  to {
+    color: #50fa7b;
+  }
+}
+@keyframes scanoffanim {
+  from {
+    color: #50fa7b;
+  }
+  to {
+    color: #f1fa8c;
+  }
+}
+.bt-bg {
+  background-color: #11111b;
+  border-radius: 16px;
+}
+
+.bt-header-box {
+  margin-top: 4px;
+  margin-right: 8px;
+  margin-left: 8px;
+  font-size: 24px;
+  color: #1793D1;
+}
+
+.bt-body-box {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.bt-button {
+  border-radius: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  font-size: 16px;
+}
+.bt-button.active {
+  animation-name: connectanim;
+  animation-duration: 50ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.bt-button.inactive {
+  animation-name: disconnectanim;
+  animation-duration: 50ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.bt-button.failed {
+  color: #f38ba8;
+}
+
+.bt-close {
+  color: #f38ba8;
+  background-color: #181825;
+  border-radius: 16px;
+  padding: 0px 8px 0px 7px;
+  margin: 0px 0px 0px 8px;
+}
+
+.bt-scan {
+  color: #f9e2fa;
+  background-color: #181825;
+  border-radius: 16px;
+  padding: 2px 11px 0px 7px;
+  margin: 0px 0px 0px 10px;
+  font-size: 18px;
+}
+.bt-scan.active {
+  animation-name: scanonanim;
+  animation-duration: 50ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.bt-scan.inactive {
+  animation-name: scanoffanim;
+  animation-duration: 50ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+trough {
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: none;
+  background-color: #181825;
+  margin-top: 2px;
+  min-width: 4px;
+  min-height: 4px;
+}
+
+slider {
+  border-radius: 0%;
+  border-width: 1px;
+  border-style: none;
+  margin: -9px -9px -9px -9px;
+  min-width: 16px;
+  min-height: 16px;
+  background-color: transparent;
+}
+
+highlight {
+  border-radius: 3px;
+  border-width: 1px;
+  border-style: none;
+  min-height: 6px;
+  background-color: #ffb86c;
+}
+
+/*# sourceMappingURL=style.css.map */
