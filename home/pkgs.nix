@@ -2,6 +2,10 @@
 {
     # Allow unfree software
     nixpkgs.config.allowUnfree = true;
+
+     nixpkgs.config.permittedInsecurePackages = [
+      "freeimage-unstable-2021-11-01"
+    ];
  
     # Programs
     home.packages = with pkgs; [
@@ -20,6 +24,7 @@
        
         # Gui stuff
         chromium
+        floorp
        
         amberol
         strawberry
@@ -64,6 +69,7 @@
         tiled
 
         texmaker
+        glow
         lapce
         jetbrains.idea-community
 
@@ -82,7 +88,7 @@
         lxappearance 
         libsForQt5.qt5ct
        
-        wine
+        winePackages.stableFull
         playerctl
         filezilla
         lynx

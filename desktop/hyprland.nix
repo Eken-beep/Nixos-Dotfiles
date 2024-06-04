@@ -171,8 +171,8 @@
             " "
             " "
             " "
-            " "
             " "
+            " "
         ];
     };
     extraCSS = builtins.readFile ./gBar.css;

@@ -30,7 +30,6 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
-g.zig_fmt_autosave = 0
 
 A.nvim_set_option("clipboard","unnamed")
 
@@ -59,6 +58,11 @@ require("nvim-tree").setup({
 
 require("illuminate").configure({
     providers = {'treesitter', 'regex'}
+})
+
+require("glow").setup({
+    width = 140,
+    width_ratio = 0.8,
 })
 
 -- setup must be called before loading

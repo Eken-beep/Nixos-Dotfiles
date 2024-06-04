@@ -37,11 +37,12 @@ in {
       
       orgmode
       vim-eunuch
+      glow-nvim
     ];
 
     # Packages to expose to neovim, mostly language servers
     extraPackages = with pkgs; [
-      rnix-lsp
+      nil
       haskell-language-server
       sumneko-lua-language-server
       nodePackages.bash-language-server
@@ -91,7 +92,7 @@ in {
         };
 
         nix = {
-          command = "rnix-lsp";
+          command = "nil";
           filetypes = [ "nix" ];
         };
 
