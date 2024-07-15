@@ -14,7 +14,7 @@
 
     shellInit = ''
         if status is-interactive
-            neofetch
+            fastfetch
         end
     '';
 

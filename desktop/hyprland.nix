@@ -25,7 +25,11 @@
               "$mod, R, exec, rofi -show drun"
               "$mod SHIFT, R, exec, rofi -show run"
               "$mod, U, pseudo"
-              "$mod, L, togglesplit"
+              "$mod, L, layoutmsg, togglesplit"
+              "$mod, I, layoutmsg, focusmaster"
+              "$mod, S, layoutmsg, swapwithmaster master"
+              "$mod, K, layoutmsg, addmaster"
+              "$mod SHIFT, K, layoutmsg, removemaster"
 
               "$mod, left, movefocus, l"
               "$mod, right, movefocus, r"
@@ -68,7 +72,7 @@
               "col.active_border" = "rgb(89b4fa) rgb(b4befe) 23deg";
               "col.inactive_border" = "rgb(45475a)";
    
-              layout = "dwindle";
+              layout = "master";
           };
           input = {
               kb_layout = "us";
@@ -113,7 +117,7 @@
               pseudotile = true;
               preserve_split = true;
           };
-          master.new_is_master = true;
+          master.new_status = "master";
 
           monitor = [
               "DP-1,3440x1440@144,0x0,1"
@@ -199,9 +203,10 @@
   services.copyq.enable = true;
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload=/home/edvin/Pictures/What_the_windows.png
+    preload=/home/edvin/Pictures/Wallpaper_1.JPG
+    preload=/home/edvin/Pictures/Wallpaper_2.JPG
 
-    wallpaper=DP-1,/home/edvin/Pictures/What_the_windows.png
-    wallpaper=DP-2,/home/edvin/Pictures/What_the_windows.png
+    wallpaper=DP-1,/home/edvin/Pictures/Wallpaper_1.JPG
+    wallpaper=DP-2,/home/edvin/Pictures/Wallpaper_2.JPG
   '';
 }

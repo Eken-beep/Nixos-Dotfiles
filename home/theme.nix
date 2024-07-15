@@ -5,7 +5,9 @@
     home.pointerCursor = {
         name = "Catppuccin-Mocha-Dark-Cursors";
         package = pkgs.catppuccin-cursors.mochaDark;
-        size = 16;
+#name = "Bibata-Modern-Classic";
+#package = pkgs.bibata-cursors;
+        size = 24;
         gtk.enable = true;
     };
 
@@ -14,7 +16,7 @@
         iconTheme = {
             package = pkgs.catppuccin-papirus-folders.override {
                 flavor = "mocha";
-                accent = "sky";
+                accent = "lavender";
             };
             name = "Papirus-Light";
         };
@@ -24,9 +26,10 @@
             size = 12;
         };
         theme = {
-            name = "Catppuccin-Mocha-Standard-Sky-Dark";
+            name = "catppuccin-mocha-lavender-standard";
             package = pkgs.catppuccin-gtk.override {
-                accents = [ "sky" ];
+                accents = [ "lavender" ];
+                size = "standard";
                 variant = "mocha";
             };
         };
@@ -42,11 +45,11 @@
         };
     };
 
-    home.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Sky-Dark";
+    home.sessionVariables.GTK_THEME = "catppuccin-mocha-lavender-standard";
 
     qt = {
         enable = true;
-        platformTheme = "gtk";
+        platformTheme.name = "qtct";
         style.name = "adwaita-qt";
     };
 }

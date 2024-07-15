@@ -33,7 +33,6 @@ in {
       vim-illuminate
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
-      indentLine
       
       orgmode
       vim-eunuch
@@ -58,6 +57,8 @@ in {
       vimPlugins.coc-json
       vimPlugins.coc-yaml
       vimPlugins.coc-vimtex
+      vimPlugins.coc-html
+      vimPlugins.coc-css
     ];
 
     coc.enable = true;

@@ -2,10 +2,6 @@
 {
     # Allow unfree software
     nixpkgs.config.allowUnfree = true;
-
-     nixpkgs.config.permittedInsecurePackages = [
-      "freeimage-unstable-2021-11-01"
-    ];
  
     # Programs
     home.packages = with pkgs; [
@@ -27,6 +23,7 @@
         floorp
        
         amberol
+        deadbeef
         strawberry
         cuetools
         shntool
@@ -39,6 +36,7 @@
         signal-desktop-beta
         discord
         element
+        freetube
        
         gimp
         kdenlive
@@ -72,6 +70,7 @@
         glow
         lapce
         jetbrains.idea-community
+        notepadqq
 
         distrobox
        
@@ -84,6 +83,7 @@
         grim
         slurp
         flameshot
+        ydotool
        
         lxappearance 
         libsForQt5.qt5ct
@@ -97,7 +97,6 @@
         jq
         python3Full
         pfetch
-        neofetch
         ranger
         tetex
         unzip
@@ -109,6 +108,10 @@
         tree
         trash-cli
         unar
+        fortune
+        figlet
+        cava
+        neo-cowsay
        
         neovim-gtk
         
@@ -123,6 +126,6 @@
     ];
     programs.java = {
         enable = true;
-        package = pkgs.jdk19;
+        package = pkgs.jdk;
     };
 }

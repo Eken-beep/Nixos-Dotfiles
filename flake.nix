@@ -13,6 +13,8 @@
         inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     hyprland-contrib = {
         url = "github:hyprwm/contrib";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -58,10 +60,13 @@
             # Enabling playerctl to control videos and music with the mediakeys
             services.playerctld.enable = true;
 
+            catppuccin.flavor = "mocha";
+
             # Imports of modules
             imports = [
                 ./desktop/hyprland.nix
                 ./home/dunst.nix 
+                ./home/fastfetch.nix
                 ./home/firefox.nix
                 ./home/fish.nix
                 ./home/fzf.nix
@@ -73,6 +78,7 @@
                 ./home/rofi.nix
                 ./home/theme.nix
                 inputs.gBar.homeManagerModules.x86_64-linux.default 
+                inputs.catppuccin.homeManagerModules.catppuccin
             ];
           };
         }
