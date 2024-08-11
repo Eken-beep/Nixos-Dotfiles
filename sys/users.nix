@@ -3,6 +3,7 @@
 {
   users.users.edvin = {
     isNormalUser = true;
+    uid = 1000;
     description = "Edvin Källström";
     extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
   };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -16,9 +16,9 @@
     xterm
     qmk
     qmk-udev-rules
-    gnome.nautilus
-    gnome.totem
-    gnome.file-roller
+    nautilus
+    totem
+    file-roller
     libimobiledevice
     ifuse
   ];

@@ -26,8 +26,6 @@ local filename = {
 	},
 }
 
-local gps = require("nvim-gps")
-
 require("lualine").setup {
 	extensions = { "quickfix", "nvim-tree", "toggleterm", "fzf" },
 	options = {

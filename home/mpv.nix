@@ -7,6 +7,7 @@
             mpris
         ];
         config = {
+            osc = "no";
         };
     };
 }

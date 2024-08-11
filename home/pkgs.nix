@@ -25,6 +25,9 @@
         amberol
         deadbeef
         strawberry
+        cantata
+        mpc-cli
+        ncmpcpp
         cuetools
         shntool
         flacon
@@ -84,9 +87,11 @@
         slurp
         flameshot
         ydotool
+        ripgrep
        
         lxappearance 
         libsForQt5.qt5ct
+        gparted
        
         winePackages.stableFull
         playerctl
@@ -108,7 +113,7 @@
         tree
         trash-cli
         unar
-        fortune
+        (pkgs.fortune.override{ withOffensive = true; })
         figlet
         cava
         neo-cowsay
@@ -117,6 +122,7 @@
         
         cabal-install
         ghc
+        perl
         cargo
         rustc
         lua

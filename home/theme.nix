@@ -1,14 +1,18 @@
 { pkgs, ... }:
-{
+let
+    cursorThemeName = "catppuccin-mocha-dark-cursors";
+    cursorSize = 32;
+in {
     # Dconf crashes without this when gtk is enabled, what???
     home.packages = [ pkgs.dconf ];
     home.pointerCursor = {
-        name = "Catppuccin-Mocha-Dark-Cursors";
+        name = cursorThemeName;
         package = pkgs.catppuccin-cursors.mochaDark;
 #name = "Bibata-Modern-Classic";
 #package = pkgs.bibata-cursors;
-        size = 24;
+        size = cursorSize;
         gtk.enable = true;
+        x11.enable = true;
     };
 
     gtk = {
@@ -33,6 +37,11 @@
                 variant = "mocha";
             };
         };
+        cursorTheme = {
+            name = cursorThemeName;
+            package = pkgs.catppuccin-cursors.mochaDark;
+            size = cursorSize;
+        };
         gtk3.extraConfig = {
             Settins = ''
                 gtk-application-prefer-dark-theme=1
@@ -45,7 +54,11 @@
         };
     };
 
-    home.sessionVariables.GTK_THEME = "catppuccin-mocha-lavender-standard";
+    home.sessionVariables = {
+        GTK_THEME = "catppuccin-mocha-lavender-standard";
+        XCURSOR_THEME = "catppuccin-mocha-dark-cursors";
+        XCURSOR_SIZE = 32;
+    };
 
     qt = {
         enable = true;

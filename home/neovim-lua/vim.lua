@@ -103,6 +103,8 @@ map('n', '<leader><right>', '<C-w>l')
 
 -- Treesitter
 local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>t', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', 'tf', builtin.find_files, {})
 vim.keymap.set('n', ',', builtin.buffers, {})
 vim.keymap.set('n', 'to', builtin.oldfiles, {})
+vim.keymap.set('n', '<leader>fo', builtin.live_grep, {})

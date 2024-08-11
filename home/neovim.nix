@@ -16,14 +16,12 @@ in {
       lualine-nvim
       lualine-lsp-progress
       bufferline-nvim
-      nvim-gps
       nvim-web-devicons
       nvim-tree-lua
 
       telescope-nvim
       telescope-symbols-nvim
       telescope-project-nvim
-      toggleterm-nvim
 
       catppuccin-nvim
 
@@ -34,7 +32,6 @@ in {
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
       
-      orgmode
       vim-eunuch
       glow-nvim
     ];
@@ -51,14 +48,6 @@ in {
       jdt-language-server
       ocamlPackages.ocaml-lsp
       zls
-
-      vimPlugins.coc-java
-      vimPlugins.coc-tsserver
-      vimPlugins.coc-json
-      vimPlugins.coc-yaml
-      vimPlugins.coc-vimtex
-      vimPlugins.coc-html
-      vimPlugins.coc-css
     ];
 
     coc.enable = true;

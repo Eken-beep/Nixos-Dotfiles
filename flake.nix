@@ -7,7 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #gBar.url = "path:/home/edvin/projects/gBar";
+#gBar.url = "path:/home/edvin/projects/gBar";
     gBar = {
         url = "github:scorpion-26/gBar";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +38,7 @@
         ./sys/pkgs.nix
         ./sys/etc.nix
         ./sys/users.nix
+        ./sys/mpd.nix
         ./sys/hardware-configuration.nix
 
         ./desktop/generic.nix
@@ -50,6 +51,7 @@
         {
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
           home-manager.users.edvin = {
             # Home manager version
             home.stateVersion = "22.05";
@@ -65,6 +67,7 @@
             # Imports of modules
             imports = [
                 ./desktop/hyprland.nix
+                ./home/beets.nix
                 ./home/dunst.nix 
                 ./home/fastfetch.nix
                 ./home/firefox.nix

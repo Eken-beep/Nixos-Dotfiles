@@ -14,6 +14,11 @@
               "signal-desktop-beta"
           ];
 
+          env = [
+              "HYPRCURSOR_THEME,catppuccin-mocha-dark-cursors"
+              "HYPRCURSOR_SIZE,32"
+          ];
+
           "$mod" = "SUPER";
 
           bind = [
@@ -30,6 +35,12 @@
               "$mod, S, layoutmsg, swapwithmaster master"
               "$mod, K, layoutmsg, addmaster"
               "$mod SHIFT, K, layoutmsg, removemaster"
+
+              "$mod, m, exec, mpc toggle"
+              "$mod, n, exec, mpc next"
+              "$mod SHIFT, n, exec, mpc prev"
+              "$mod SHIFT, s, exec, mpc random"
+              "$mod CTRL, s, exec, mpc single once"
 
               "$mod, left, movefocus, l"
               "$mod, right, movefocus, r"
@@ -80,22 +91,21 @@
               follow_mouse = true;
           };
           decoration = {
-              active_opacity = 1;
-              inactive_opacity = 1;
+              active_opacity = 0.85;
+              inactive_opacity = 0.75;
               fullscreen_opacity = 1;
 
               drop_shadow = true;
-              shadow_range = 5;
-              shadow_render_power = 4;
+              shadow_range = 8;
+              shadow_render_power = 2;
 
-              dim_inactive = true;
-              dim_strength = 0.2;
+              dim_inactive = false;
              
               rounding = 15;
 
               blur = {
                   enabled = true;
-                  size = 20;
+                  size = 5;
                   passes = 3;
               };
           };
@@ -137,9 +147,14 @@
               "workspace 7,class:^(Signal)$"
               "float,class:^(Paradox Launcher)$"
           ];
+          windowrulev2 = [
+              "opacity 1.0 override 0.75 override, floating:1"
+              "opacity 1.0 override, workspace:4"
+          ];
       };
       extraConfig = ''
           bind = $mod, P, exec, grim -g "$(slurp)" - | wl-copy
+          bind = $mod SHIFT, P, exec, grim -g "$(slurp)"
       '';
   };
 
@@ -203,10 +218,9 @@
   services.copyq.enable = true;
 
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload=/home/edvin/Pictures/Wallpaper_1.JPG
-    preload=/home/edvin/Pictures/Wallpaper_2.JPG
+    preload=/home/edvin/Pictures/forrest.png
 
-    wallpaper=DP-1,/home/edvin/Pictures/Wallpaper_1.JPG
-    wallpaper=DP-2,/home/edvin/Pictures/Wallpaper_2.JPG
+    wallpaper=DP-1,/home/edvin/Pictures/forrest.png
+    wallpaper=DP-2,/home/edvin/Pictures/forrest.png
   '';
 }
