@@ -9,16 +9,21 @@ o.number = true
 o.updatetime = 200
 o.scrolloff = 8
 
--- Editing settings with tab and similar
+-- Linebreaks and indents
 o.expandtab = true
 o.smarttab = true
 o.cindent = true
 o.autoindent = true
-o.wrap = true
-o.textwidth = 300
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = -1
+o.wrap = true
+opt.linebreak = true
+opt.breakindent = true
+opt.backspace = "indent,eol,start"
+
+opt.spell = true
+opt.spelllang = { 'en', 'sv' }
 
 o.backup = false
 o.writebackup = false
@@ -65,8 +70,39 @@ require("glow").setup({
     width_ratio = 0.8,
 })
 
+local highlight = {
+    "RainbowRed",
+    "RainbowYellow",
+    "RainbowBlue",
+    "RainbowOrange",
+    "RainbowGreen",
+    "RainbowViolet",
+    "RainbowCyan",
+}
+
+local hooks = require "ibl.hooks"
+-- create the highlight groups in the highlight setup hook, so they are reset
+-- every time the colorscheme changes
+hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+    A.nvim_set_hl(0, "RainbowRed", { fg = "#F38BA8" })
+    A.nvim_set_hl(0, "RainbowYellow", { fg = "#F9E2AF" })
+    A.nvim_set_hl(0, "RainbowBlue", { fg = "#89B4FA" })
+    A.nvim_set_hl(0, "RainbowOrange", { fg = "#FAB387" })
+    A.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
+    A.nvim_set_hl(0, "RainbowViolet", { fg = "#CBA6F7" })
+    A.nvim_set_hl(0, "RainbowCyan", { fg = "#94E2D5" })
+end)
+
+require("ibl").setup { indent = { highlight = highlight } }
+
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
+
+-- Load vimtex compilation while in tex document
+A.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+    pattern = { "*.tex", "latex" },
+    command = ":VimtexCompile"
+})
 
 -- KEYBINDINGS
 local function map(m, k, v)

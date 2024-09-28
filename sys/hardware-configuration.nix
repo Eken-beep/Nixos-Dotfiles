@@ -55,6 +55,27 @@
       neededForBoot = true;
     };
 
+  # Stupid filesystems i need to mount often
+  fileSystems."/mnt/walkman" =
+    { device = "/dev/disk/by-uuid/A0F4-58DE";
+      neededForBoot = false;
+      options = [
+          "noauto"
+          "rw"
+          "user"
+      ];
+    };
+
+  fileSystems."/mnt/sdb" =
+    { device = "/dev/sdb1";
+      neededForBoot = false;
+      options = [
+          "noauto"
+          "rw"
+          "user"
+      ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/e259a78e-fe34-495a-91f2-bfe23d1befad"; }
     ];

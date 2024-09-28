@@ -1,5 +1,13 @@
 { pkgs, ... }:
-{
+let
+    tex = (pkgs.texlive.combine {
+        scheme-medium = pkgs.texlive.scheme-small // {
+            pkgs = pkgs.lib.filter
+                (x: (x.pname != "vptovf"))
+                pkgs.texlive.scheme-medium.pkgs;
+        };
+    });
+in {
     # Allow unfree software
     nixpkgs.config.allowUnfree = true;
  
@@ -12,7 +20,6 @@
         retroarch
         libretro.np2kai
         #dolphin-emu
-        grapejuice
         (pkgs.dwarf-fortress-packages.dwarf-fortress-full.override {
             enableIntro = false;
             enableFPS = true;
@@ -20,7 +27,6 @@
        
         # Gui stuff
         chromium
-        floorp
        
         amberol
         deadbeef
@@ -69,7 +75,7 @@
        
         tiled
 
-        texmaker
+        tex
         glow
         lapce
         jetbrains.idea-community
@@ -82,6 +88,7 @@
         pamixer
         pscircle
         swaylock
+        imagemagick
        
         grim
         slurp
@@ -97,13 +104,13 @@
         playerctl
         filezilla
         lynx
+        zathura
        
         socat
         jq
         python3Full
         pfetch
         ranger
-        tetex
         unzip
         zlib
         pkg-config

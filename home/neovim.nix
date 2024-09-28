@@ -18,6 +18,7 @@ in {
       bufferline-nvim
       nvim-web-devicons
       nvim-tree-lua
+      indent-blankline-nvim
 
       telescope-nvim
       telescope-symbols-nvim
@@ -31,6 +32,8 @@ in {
       vim-illuminate
       nvim-treesitter.withAllGrammars
       nvim-treesitter-context
+
+      vimtex
       
       vim-eunuch
       glow-nvim
