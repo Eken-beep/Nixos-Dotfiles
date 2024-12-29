@@ -5,12 +5,12 @@
     enable = true;
 
     font = {
-      package = pkgs.nerdfonts;
+      package = pkgs.nerd-fonts.jetbrains-mono;
       name = "JetBrainsMono Nerd Font";
       size = 12;
     };
     
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
 
     keybindings = {
         "alt+j" = "previous_window";

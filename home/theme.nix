@@ -26,7 +26,7 @@ in {
         };
         font = {
             name = "FiraCode Nerd Font";
-            package = pkgs.nerdfonts;
+            package = pkgs.nerd-fonts.fira-code;
             size = 12;
         };
         theme = {

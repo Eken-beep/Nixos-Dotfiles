@@ -19,14 +19,14 @@
   services = {
     gnome = {
         gnome-keyring.enable = true;
-        tracker-miners.enable = true;
+        localsearch.enable = true;
     };
 
     dbus.enable = true;
     openssh.enable = true;
     usbmuxd.enable = true;
 
-    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    udev.packages = with pkgs; [ gnome-settings-daemon ];
     flatpak.enable = true;
     ratbagd.enable = true;
   };

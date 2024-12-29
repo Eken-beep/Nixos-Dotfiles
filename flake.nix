@@ -1,13 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-old.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     home-manager = {
       url ="github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-#gBar.url = "path:/home/edvin/projects/gBar";
+    #gBar.url = "path:/home/edvin/projects/gBar";
     gBar = {
         url = "github:scorpion-26/gBar";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -24,9 +25,11 @@
         url = "github:hyprwm/hyprpicker";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixpkgs-old, home-manager, ... }@inputs: {
     nixosConfigurations.Compootah = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
@@ -44,21 +47,23 @@
         ./desktop/generic.nix
         # Some parts of hyprland has to be outside home manager
         ./desktop/wayland.nix
-#./desktop/gnome.nix
+        #./desktop/gnome.nix
         #./desktop/xmonad.nix
 
         home-manager.nixosModules.home-manager
         {
-          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.extraSpecialArgs = { inherit inputs;
+            pkgs-old = import nixpkgs-old {
+              system = "x86_64-linux";
+            };
+          };
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "hm-backup";
           home-manager.users.edvin = {
             # Home manager version
             home.stateVersion = "22.05";
-     
             # Let Home Manager install and manage itself.
             programs.home-manager.enable = true;
-     
             # Enabling playerctl to control videos and music with the mediakeys
             services.playerctld.enable = true;
 

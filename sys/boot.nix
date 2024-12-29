@@ -5,8 +5,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_8.override {
+# Remember to set this manually when needing an update
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
   #          argsOverride = {
   #              src = pkgs.fetchurl {
   #                  url = "https://mirrors.edge.kernel.org/pub/linux/kernel/v6.x/linux-6.8.5.tar.xz";

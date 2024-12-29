@@ -30,7 +30,7 @@
   # Fonts
   fonts.packages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     fira-code
     fira-code-symbols
@@ -38,7 +38,7 @@
     dina-font
     proggyfonts
     font-awesome
-    nerdfonts
+    nerd-fonts.fira-code
     work-sans
     source-sans
     public-sans

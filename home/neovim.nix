@@ -100,6 +100,11 @@ in {
           rootPatterns = [ "Cargo.toml" ];
         };
 
+        svelte = {
+          ask-to-enable-ts-plugin = false;
+          enable-ts-plugin = true;
+        };
+
         c = {
           command = "ccls";
           filetypes = [ "c" "cpp" ];

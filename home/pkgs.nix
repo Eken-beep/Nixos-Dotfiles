@@ -1,11 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-old, inputs, ... }:
 let
     tex = (pkgs.texlive.combine {
-        scheme-medium = pkgs.texlive.scheme-small // {
-            pkgs = pkgs.lib.filter
-                (x: (x.pname != "vptovf"))
-                pkgs.texlive.scheme-medium.pkgs;
-        };
+        inherit (pkgs.texlive) scheme-full
+            csquotes
+            biblatex;
     });
 in {
     # Allow unfree software
@@ -26,12 +24,13 @@ in {
         })
        
         # Gui stuff
+        inputs.zen-browser.packages."${system}".specific
         chromium
        
         amberol
         deadbeef
         strawberry
-        cantata
+        pkgs-old.cantata
         mpc-cli
         ncmpcpp
         cuetools
@@ -42,7 +41,6 @@ in {
        
         tdesktop
         signal-desktop
-        signal-desktop-beta
         discord
         element
         freetube
@@ -122,8 +120,8 @@ in {
         unar
         (pkgs.fortune.override{ withOffensive = true; })
         figlet
-        cava
         neo-cowsay
+        sqlitebrowser
        
         neovim-gtk
         
@@ -136,6 +134,8 @@ in {
         lua54Packages.luarocks-nix
         love
         zig
+        nodejs
+        netlify-cli
     ];
     programs.java = {
         enable = true;
