@@ -9,9 +9,6 @@
         package = pkgs.papirus-icon-theme;
     };
 
-    catppuccin.enable = true;
-    catppuccin.flavor = "mocha";
-
     settings = {
       global = {
         width = 400;

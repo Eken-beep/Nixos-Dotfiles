@@ -42,15 +42,12 @@ in {
             package = pkgs.catppuccin-cursors.mochaDark;
             size = cursorSize;
         };
-        gtk3.extraConfig = {
-            Settins = ''
-                gtk-application-prefer-dark-theme=1
-            '';
-        };
-        gtk4.extraConfig = {
-            Settins = ''
-                gtk-application-prefer-dark-theme=1
-            '';
+    };
+
+    catppuccin = {
+        dunst = {
+            enable = true;
+            flavor = "mocha";
         };
     };
 
@@ -63,6 +60,6 @@ in {
     qt = {
         enable = true;
         platformTheme.name = "qtct";
-        style.name = "adwaita-qt";
+        style.name = "breeze";
     };
 }

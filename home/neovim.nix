@@ -45,6 +45,7 @@ in {
       haskell-language-server
       sumneko-lua-language-server
       nodePackages.bash-language-server
+      perl
       ccls
       rust-analyzer
       lua54Packages.digestif
@@ -59,7 +60,20 @@ in {
       "suggest.enablePreview" = true;
       "suggest.enablePreselect" = false;
       "suggest.disableKind" = true;
+
+      "perl.Perl::LanguageServer.enable" = true;
+
       languageserver = {
+        c = {
+          command = "ccls";
+          filetypes = [ "c" "cpp" "cuda" "objc" "objcpp" ];
+          rootPatterns = [ ".ccls-root" "compile_commands.json" ];
+          initializationOptions = {
+            cache.directory = ".ccls-cache";
+            client.snippetSupport = true;
+          };
+        };
+
         haskell = {
           command = "haskell-language-server-wrapper";
           args = [ "--lsp" ];
@@ -94,6 +108,12 @@ in {
           filetypes = ["tex" "plaintex" "contex"];
         };
 
+                #perlnavigator = {
+                #  command = "node";
+                #  args = [ "~/projects/PerlNavigator/server/out/server.js" "--stdio" ];
+                #  filetypes = [ "perl" ];
+                #};
+
         rust = {
           command = "rust-analyzer";
           filetypes = [ "rust" ];
@@ -103,11 +123,7 @@ in {
         svelte = {
           ask-to-enable-ts-plugin = false;
           enable-ts-plugin = true;
-        };
-
-        c = {
-          command = "ccls";
-          filetypes = [ "c" "cpp" ];
+          filetypes = [ "svelte" ];
         };
 
         ocaml = {
@@ -132,6 +148,7 @@ in {
             \ 'coc-json',
             \ 'coc-yaml',
             \ 'coc-vimtex',
+            \ 'coc-perl',
             \ ]
     '';
   };

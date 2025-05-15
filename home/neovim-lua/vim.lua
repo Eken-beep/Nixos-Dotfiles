@@ -12,12 +12,12 @@ o.scrolloff = 8
 -- Linebreaks and indents
 o.expandtab = true
 o.smarttab = true
-o.cindent = true
 o.autoindent = true
 o.tabstop = 4
 o.shiftwidth = 4
 o.softtabstop = -1
 o.wrap = true
+o.colorcolumn = "80"
 opt.linebreak = true
 opt.breakindent = true
 opt.backspace = "indent,eol,start"
@@ -104,12 +104,29 @@ A.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
     command = ":VimtexCompile"
 })
 
+A.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+    pattern = {
+        "*.tex",
+        "*.md",
+        "*.txt",
+    },
+    command = ":set colorcolumn='0'"
+})
+
+-- Special sauce for c
+vim.cmd("autocmd FileType c setlocal shiftwidth=4 softtabstop=4 cindent")
+
 -- KEYBINDINGS
 local function map(m, k, v)
     vim.keymap.set(m, k, v, { silent = true })
 end
 
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+local opts = {
+    silent = true,
+    noremap = true,
+    expr = true,
+    replace_keycodes = false
+}
 vim.keymap.set("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 

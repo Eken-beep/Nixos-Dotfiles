@@ -8,11 +8,19 @@
   border-radius: 0px;
   border-bottom-color: #89b4fa;
   border-bottom-width: 2px;
+  margin: 0;
+}
+
+.right, .time-text, .left {
+    background-color: #1e1e2e;
+    border-radius: 16px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none;
 }
 
 .right {
   margin-right: 10px;
-  border-radius: 16px;
 }
 
 .time-text {
