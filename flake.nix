@@ -67,13 +67,13 @@
 
       modules = [ 
         # Importing all the other garbage
-        ./sys/boot.nix
+        ./systems/Compootah/boot.nix
         ./sys/locale.nix
         ./sys/pkgs.nix
         ./sys/etc.nix
         ./sys/users.nix
         ./sys/mpd.nix
-        ./sys/hardware-configuration.nix
+        ./systems/Compootah/hardware-configuration.nix
 
         ./desktop/generic.nix
         # Some parts of hyprland has to be outside home manager
@@ -103,7 +103,69 @@
 
             # Imports of modules
             imports = [
-                ./desktop/hyprland.nix
+                ./systems/Compootah/hyprland.nix
+                ./home/beets.nix
+                ./home/cava.nix
+                ./home/dunst.nix 
+                ./home/fastfetch.nix
+                ./home/firefox.nix
+                ./home/fish.nix
+                ./home/fzf.nix
+                ./home/git.nix 
+                ./home/kitty.nix
+                ./home/mpv.nix
+                ./home/neovim.nix 
+                ./home/pkgs.nix
+                ./home/rofi.nix
+                ./home/theme.nix
+                inputs.gBar.homeManagerModules.x86_64-linux.default 
+                inputs.catppuccin.homeModules.catppuccin
+            ];
+          };
+        }
+      ];
+    };
+
+    nixosConfigurations.x1c = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs; inherit colors;};
+
+      modules = [ 
+        # Importing all the other garbage
+        ./systems/x1c/boot.nix
+        ./sys/locale.nix
+        ./sys/pkgs.nix
+        ./sys/etc.nix
+        ./sys/users.nix
+        ./sys/mpd.nix
+        ./systems/x1c/hardware-configuration.nix
+
+        ./desktop/generic.nix
+        ./desktop/wayland.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.extraSpecialArgs = { inherit inputs;
+            pkgs-old = import nixpkgs-old {
+              system = "x86_64-linux";
+            };
+            colors = colors;
+          };
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "hm-backup";
+          home-manager.users.edvin = {
+            # Home manager version
+            home.stateVersion = "22.05";
+            # Let Home Manager install and manage itself.
+            programs.home-manager.enable = true;
+            # Enabling playerctl to control videos and music with the mediakeys
+            services.playerctld.enable = true;
+
+            catppuccin.flavor = "mocha";
+
+            # Imports of modules
+            imports = [
+                ./systems/x1c/hyprland.nix
                 ./home/beets.nix
                 ./home/cava.nix
                 ./home/dunst.nix 
