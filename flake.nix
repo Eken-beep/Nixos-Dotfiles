@@ -103,7 +103,8 @@
 
             # Imports of modules
             imports = [
-                ./systems/Compootah/hyprland.nix
+                ./systems/Compootah/hyprland
+
                 ./home/beets.nix
                 ./home/cava.nix
                 ./home/dunst.nix 
