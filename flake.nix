@@ -138,6 +138,8 @@
         ./sys/etc.nix
         ./sys/users.nix
         ./sys/mpd.nix
+
+        ./systems/x1c/etc.nix
         ./systems/x1c/hardware-configuration.nix
 
         ./desktop/generic.nix
@@ -165,7 +167,8 @@
 
             # Imports of modules
             imports = [
-                ./systems/x1c/hyprland.nix
+                ./systems/x1c/hyprland
+
                 ./home/beets.nix
                 ./home/cava.nix
                 ./home/dunst.nix 

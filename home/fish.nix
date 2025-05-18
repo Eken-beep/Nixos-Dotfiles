@@ -16,6 +16,10 @@
         if status is-interactive
             fastfetch
         end
+
+        if uwsm check may-start
+            uwsm start default
+        end
     '';
 
     functions = {

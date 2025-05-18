@@ -19,15 +19,8 @@
         withUWSM = true;
     };
 
-    services.displayManager = {
-        sessionPackages = [ pkgs.hyprland ];
-        ly.enable = true;
-        ly.settings = {
-            bg = "0x00" + colors.base;
-            fg = "0x00" + colors.text;
-            border_fg = "0x00" + colors.blue;
-            login_cmd = ''export XDG_CURRENT_DESKTOP=Hyprland; exec "$@" '';
-        };
+    services.xserver.displayManager = {
+        lightdm.enable = false;
     };
 
     # Enable sound with pipewire.

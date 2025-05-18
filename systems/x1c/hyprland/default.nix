@@ -1,17 +1,21 @@
 { pkgs, inputs, colors, ... }:
 
 {
+    imports = [
+        ./gBar.nix
+        ./hyprlock.nix
+    ];
+
     wayland.windowManager.hyprland = {
         enable = true;
         xwayland.enable = true;
         settings = {
             exec-once = [
+                "uwsm finalize"
                 "swww-daemon"
                 "gBar bar 0"
-                "gBar bar 1"
-                "kitty"
-                "flatpak run app.zen_browser.zen"
-                "signal-desktop"
+                "uwsm app -- kitty"
+                "uwsm app -- firefox"
             ];
 
             env = [
@@ -21,57 +25,75 @@
 
             "$mod" = "SUPER";
 
-            bind = [
-                "$mod, D, exec, kitty"
-                "$mod, G, killactive"
-                "$mod, X, exit"
+            bind = let
+                workspaces = builtins.concatLists (builtins.genList (
+                    x:
+                    let
+                        ws = toString (x + 1);
+                    in [
+                        "$mod, ${ws}, workspace, ${ws}"
+                        "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
+                    ]
+                ) 9);
+            in workspaces ++
+                [
+                # Compositor commands
+                "$mod, C, killactive"
                 "$mod, E, togglefloating"
                 "$mod, F, fullscreen"
-                "$mod, R, exec, rofi -show drun"
-                "$mod SHIFT, R, exec, rofi -show run"
+                "$mod SHIFT, X, exec, uwsm stop"
+
+                # Layout
                 "$mod, U, pseudo"
                 "$mod, L, layoutmsg, togglesplit"
-                "$mod, I, layoutmsg, focusmaster"
-                "$mod, S, layoutmsg, swapwithmaster master"
+                "$mod, O, layoutmsg, focusmaster"
+                "$mod, S, layoutmsg, swapwithmaster auto"
                 "$mod, K, layoutmsg, addmaster"
                 "$mod SHIFT, K, layoutmsg, removemaster"
 
+                # Launchers
+                "$mod, Return, exec, uwsm app -- kitty"
+                "$mod, Space, exec, rofi -show drun -run-command 'uwsm app -- {cmd}'"
+                "$mod SHIFT, R, exec, rofi -show run"
+
+                # MPD
                 "$mod, m, exec, mpc toggle"
                 "$mod, n, exec, mpc next"
                 "$mod SHIFT, n, exec, mpc prev"
                 "$mod SHIFT, s, exec, mpc random"
                 "$mod CTRL, s, exec, mpc single once"
 
+                # Navigation
+                "$mod, h, layoutmsg, cycleprev"
+                "$mod, l, layoutmsg, cyclenext"
+
                 "$mod, left, movefocus, l"
-                "$mod, right, movefocus, r"
-                "$mod, up, movefocus, u"
                 "$mod, down, movefocus, d"
+                "$mod, up, movefocus, u"
+                "$mod, right, movefocus, r"
+
+                "$mod SHIFT, h, resizeactive, -10,0"
+                "$mod SHIFT, l, resizeactive, 10,0"
 
                 "$mod SHIFT, left, resizeactive,-10,0"
-                "$mod SHIFT, right, resizeactive,10,0"
-                "$mod SHIFT, up, resizeactive,0,-10"
                 "$mod SHIFT, down, resizeactive,0,10"
-
-                "$mod, 1, workspace, 1"
-                "$mod, 2, workspace, 2"
-                "$mod, 3, workspace, 3"
-                "$mod, 4, workspace, 4"
-                "$mod, 5, workspace, 5"
-                "$mod, 6, workspace, 6"
-                "$mod, 7, workspace, 7"
-                "$mod, 8, workspace, 8"
-                "$mod, 9, workspace, 9"
-
-                "$mod SHIFT, 1, movetoworkspace, 1"
-                "$mod SHIFT, 2, movetoworkspace, 2"
-                "$mod SHIFT, 3, movetoworkspace, 3"
-                "$mod SHIFT, 4, movetoworkspace, 4"
-                "$mod SHIFT, 5, movetoworkspace, 5"
-                "$mod SHIFT, 6, movetoworkspace, 6"
-                "$mod SHIFT, 7, movetoworkspace, 7"
-                "$mod SHIFT, 8, movetoworkspace, 8"
-                "$mod SHIFT, 9, movetoworkspace, 9"
+                "$mod SHIFT, up, resizeactive,0,-10"
+                "$mod SHIFT, right, resizeactive,10,0"
             ];
+
+            # Built in keys need hold down thing sometimes
+            bindel = [
+                ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+                ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+
+                ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%+"
+                ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 5%-"
+            ];
+            bindl = [
+                ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+                ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+            ];
+
             bindm = [
                 "$mod, mouse:272, movewindow"
                 "$mod, mouse:273, resizewindow"
@@ -87,8 +109,13 @@
             };
             input = {
                 kb_layout = "us";
-                kb_variant = "altgr-intl";
+                kb_variant = "dvorak-alt-intl";
                 follow_mouse = true;
+
+                touchpad = {
+                    natural_scroll = true;
+                    scroll_factor = 0.9;
+                };
             };
             decoration = {
                 active_opacity = 0.92;
@@ -138,14 +165,15 @@
             ];
 
             workspace = [
-                "7, monitor:DP-2, defalut:true"
-                "8, monitor:DP-2"
-                "9, monitor:DP-2"
+                "w[tv1], gapsout:0, gapsin:0"
+                "f[1], gapsout:0, gapsin:0"
             ];
 
             windowrule = [
-                "workspace 7,class:^(discord)$"
-                "workspace 7,class:^(Signal)$"
+                "bordersize 0, floating:0, onworkspace:w[tv1]"
+                "rounding 0, floating:0, onworkspace:w[tv1]"
+                "bordersize 0, floating:0, onworkspace:f[1]"
+                "rounding 0, floating:0, onworkspace:f[1]"
                 "float,class:^(Paradox Launcher)$"
             ];
             windowrulev2 = [
@@ -159,52 +187,6 @@
         '';
     };
 
-    programs.gBar = {
-        enable = true;
-        config = {
-            CPUThermalZone = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";
-            Location = "T";
-            SuspendCommand = "systemctl suspend";
-            LockCommand = "swaylock";
-            ExitCommand = "killall Hyprland";
-            DateTimeStyle = "%a %D %H:%M:%S";
-            CenterTime = true;
-            DiskPartition = "/home/";
-
-            AudioRevealer = false;
-            AudioInput = true;
-            AudioMinVolume = 0;
-            AudioMaxVolume = 6;
-
-            EnableSNI = false;
-
-            NetworkWidget = true;
-            NetworkAdapter = "enp0s31f6";
-
-            NumWorkspaces = 9;
-            UseHyprlandIPC = true;
-            WorkspaceSymbols = [
-                " "
-                " "
-                " "
-                " "
-                " "
-                " "
-                " "
-                " "
-                " "
-            ];
-        };
-        extraConfig = ''
-            WidgetsLeft: [Workspaces]
-
-            WidgetsCenter: [Time]
-
-            WidgetsRight: [Audio, Bluetooth, Network, Disk, VRAM, GPU, RAM, CPU, Power]
-        '';
-        extraCSS = builtins.readFile ./gBar.css;
-    };
-
     programs.swaylock.settings = {
         indicator-radius = 100;
         font-size = 24;
@@ -216,6 +198,7 @@
         pkgs.wl-clipboard
         pkgs.swww
         pkgs.hyprpicker
+        pkgs.brightnessctl
 
         inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
         inputs.hyprland-contrib.packages.${pkgs.system}.scratchpad
