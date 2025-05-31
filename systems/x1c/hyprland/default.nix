@@ -43,6 +43,8 @@
                 "$mod, F, fullscreen"
                 "$mod SHIFT, X, exec, uwsm stop"
 
+                "$mod CTRL, K, exec, sh -c ~/sysconfig/desktop/scripts/swap_keyboard.sh"
+
                 # Layout
                 "$mod, U, pseudo"
                 "$mod, L, layoutmsg, togglesplit"
@@ -108,9 +110,9 @@
                 layout = "master";
             };
             input = {
-                kb_layout = "us";
-                kb_variant = "dvorak-alt-intl";
                 follow_mouse = true;
+                kb_layout = "cust,se";
+                kb_variant = ",nodeadkeys";
 
                 touchpad = {
                     natural_scroll = true;
@@ -118,12 +120,12 @@
                 };
             };
             decoration = {
-                active_opacity = 0.92;
-                inactive_opacity = 0.8;
+                active_opacity = 1;
+                inactive_opacity = 1;
                 fullscreen_opacity = 1;
 
                 shadow = {
-                    enabled = true;
+                    enabled = false;
                     color = "rgb(${colors.crust})";
                     range = 10;
                 };
@@ -133,7 +135,7 @@
                 rounding = 10;
 
                 blur = {
-                    enabled = true;
+                    enabled = false;
                     size = 8;
                     passes = 2;
                 };

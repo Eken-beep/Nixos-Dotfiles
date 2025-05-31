@@ -9,7 +9,8 @@
             LockCommand = "loginctl lock-session";
             ExitCommand = "uwsm stop";
             DateTimeStyle = "%a %D %H:%M:%S";
-            DiskPartition = "/";
+            DiskPartition = "/home";
+            BatteryFolder = "/sys/class/power_supply/BAT0";
 
             AudioRevealer = false;
             AudioInput = true;
