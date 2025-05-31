@@ -1,7 +1,7 @@
 { pkgs, inputs, colors, ... }:
 
 {
-    import = [
+    imports = [
         ./hyprlock.nix
     ];
     wayland.windowManager.hyprland = {
@@ -38,7 +38,7 @@
             in workspaces ++ [
                 "$mod, D, exec, uwsm app -- kitty"
                 "$mod, G, killactive"
-                "$mod, X, uwsm stop"
+                "$mod, X, exec, uwsm stop"
                 "$mod, E, togglefloating"
                 "$mod, F, fullscreen"
                 "$mod, R, exec, rofi -show drun -run-command 'uwsm app -- {cmd}'"
@@ -159,8 +159,8 @@
             CPUThermalZone = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp1_input";
             Location = "T";
             SuspendCommand = "systemctl suspend";
-            LockCommand = "swaylock";
-            ExitCommand = "killall Hyprland";
+            LockCommand = "loginctl lock-session";
+            ExitCommand = "uwsm stop";
             DateTimeStyle = "%a %D %H:%M:%S";
             CenterTime = true;
             DiskPartition = "/home/";
