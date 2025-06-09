@@ -26,7 +26,7 @@
     variables = {
       EDITOR = "nvim";
     };
-    pathsToLink = [ "/libexec" ];
+    pathsToLink = [ "/libexec" "/share/bash-completion" ];
     sessionVariables = rec {
       LIBVA_DRIVER_NAME="nvidia";
     };

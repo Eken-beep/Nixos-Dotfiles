@@ -1,13 +1,14 @@
 { pkgs, ... }:
 let
-    cursorThemeName = "catppuccin-mocha-dark-cursors";
+    cursorThemeName = "catppuccin-latte-lavender-cursors";
+    cursorPackage = pkgs.catppuccin-cursors.latteLavender;
     cursorSize = 32;
 in {
     # Dconf crashes without this when gtk is enabled, what???
     home.packages = [ pkgs.dconf ];
     home.pointerCursor = {
         name = cursorThemeName;
-        package = pkgs.catppuccin-cursors.mochaDark;
+        package = cursorPackage;
 #name = "Bibata-Modern-Classic";
 #package = pkgs.bibata-cursors;
         size = cursorSize;
@@ -19,14 +20,14 @@ in {
         enable = true;
         iconTheme = {
             package = pkgs.catppuccin-papirus-folders.override {
-                flavor = "mocha";
+                flavor = "latte";
                 accent = "lavender";
             };
             name = "Papirus-Light";
         };
         font = {
-            name = "FiraCode Nerd Font";
-            package = pkgs.nerd-fonts.fira-code;
+            name = "JetBrainsMono Nerd Font";
+            package = pkgs.nerd-fonts.jetbrains-mono;
             size = 12;
         };
         theme = {
@@ -34,12 +35,12 @@ in {
             package = pkgs.catppuccin-gtk.override {
                 accents = [ "lavender" ];
                 size = "standard";
-                variant = "mocha";
+                variant = "latte";
             };
         };
         cursorTheme = {
             name = cursorThemeName;
-            package = pkgs.catppuccin-cursors.mochaDark;
+            package = cursorPackage;
             size = cursorSize;
         };
     };
@@ -47,19 +48,19 @@ in {
     catppuccin = {
         dunst = {
             enable = true;
-            flavor = "mocha";
+            flavor = "latte";
         };
     };
 
     home.sessionVariables = {
-        GTK_THEME = "catppuccin-mocha-lavender-standard";
-        XCURSOR_THEME = "catppuccin-mocha-dark-cursors";
-        XCURSOR_SIZE = 32;
+        GTK_THEME = "catppuccin-latte-lavender-standard";
+        XCURSOR_THEME = cursorThemeName;
+        XCURSOR_SIZE = cursorSize;
     };
 
     qt = {
         enable = true;
-        platformTheme.name = "qtct";
+        platformTheme.name = "gtk3";
         style.name = "breeze";
     };
 }

@@ -26,6 +26,7 @@
     };
 
     dbus.enable = true;
+    dbus.implementation = "broker";
     openssh.enable = true;
     usbmuxd.enable = true;
 

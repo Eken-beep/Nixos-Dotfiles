@@ -110,7 +110,7 @@ A.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
         "*.md",
         "*.txt",
     },
-    command = ":set colorcolumn='0'"
+    command = ":set colorcolumn=0"
 })
 
 -- Special sauce for c

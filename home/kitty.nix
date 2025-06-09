@@ -10,7 +10,7 @@
       size = 12;
     };
     
-    themeFile = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Latte";
 
     keybindings = {
         "alt+j" = "previous_window";

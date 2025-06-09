@@ -2,6 +2,8 @@
 
 {
     environment.systemPackages = with pkgs; [
+        dbus-broker
+        dbus
         vim  
         wget
         libnotify

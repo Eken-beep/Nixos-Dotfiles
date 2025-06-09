@@ -62,6 +62,7 @@ in {
         swaylock
         imagemagick
         waypaper
+        wmenu
 
         grim
         slurp
