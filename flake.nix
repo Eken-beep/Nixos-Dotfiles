@@ -31,6 +31,11 @@
       #url = "path:/home/edvin/projects/slstatus";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-old, home-manager, ... }@inputs:
@@ -199,11 +204,18 @@
             # Enabling playerctl to control videos and music with the mediakeys
             services.playerctld.enable = true;
 
+            programs.zen-browser = {
+                enable = true;
+                policies = {
+                    DisableAppUpdates = true;
+                };
+            };
             catppuccin.flavor = "mocha";
 
             # Imports of modules
             imports = [
                 ./systems/x1c/hyprland
+                ./systems/x1c/river
 
                 ./home/bash.nix
                 ./home/beets.nix
@@ -222,6 +234,7 @@
                 ./home/theme.nix
                 inputs.gBar.homeManagerModules.x86_64-linux.default 
                 inputs.catppuccin.homeModules.catppuccin
+                inputs.zen-browser.homeModules.twilight
             ];
           };
         }
