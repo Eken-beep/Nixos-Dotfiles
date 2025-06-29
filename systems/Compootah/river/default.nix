@@ -10,7 +10,7 @@
         enable = true;
         settings = {
             # So that this follows the system color config
-            background-color = "0x${colors.rosewater}";
+            background-color = "0x${colors.maroon}";
             border-color-focused = "0x${colors.blue}";
             border-color-unfocused = "0x${colors.text}";
             border-color-urgent = "0x${colors.red}";

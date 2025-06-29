@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-    cursorThemeName = "catppuccin-latte-lavender-cursors";
-    cursorPackage = pkgs.catppuccin-cursors.latteLavender;
+    cursorThemeName = "catppuccin-mocha-dark-cursors";
+    cursorPackage = pkgs.catppuccin-cursors.mochaDark;
     cursorSize = 32;
 in {
     # Dconf crashes without this when gtk is enabled, what???
@@ -20,7 +20,7 @@ in {
         enable = true;
         iconTheme = {
             package = pkgs.catppuccin-papirus-folders.override {
-                flavor = "latte";
+                flavor = "mocha";
                 accent = "lavender";
             };
             name = "Papirus-Light";
@@ -35,7 +35,7 @@ in {
             package = pkgs.catppuccin-gtk.override {
                 accents = [ "lavender" ];
                 size = "standard";
-                variant = "latte";
+                variant = "mocha";
             };
         };
         cursorTheme = {
@@ -48,12 +48,12 @@ in {
     catppuccin = {
         dunst = {
             enable = true;
-            flavor = "latte";
+            flavor = "mocha";
         };
     };
 
     home.sessionVariables = {
-        GTK_THEME = "catppuccin-latte-lavender-standard";
+        GTK_THEME = "catppuccin-mocha-lavender-standard";
         XCURSOR_THEME = cursorThemeName;
         XCURSOR_SIZE = cursorSize;
     };

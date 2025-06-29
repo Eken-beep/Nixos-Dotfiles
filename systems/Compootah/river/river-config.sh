@@ -6,6 +6,8 @@ wmenu_color="-M 11111b -m cdd6f4 -N 1e1e2e -n cdd6f4 -S b4befe -s 11111b -f 'Jet
 
 riverctl map normal Super D spawn kitty
 
+riverctl map normal Super P spawn 'grim -g "$(slurp)" | wl-copy'
+
 riverctl map normal Super G close
 
 riverctl map normal Super+Control X exit
@@ -141,10 +143,11 @@ riverctl set-repeat 50 300
 riverctl keyboard-layout -variant altgr-intl us
 riverctl spawn 'printf "US(altgr-intl)" > ~/keyboardlayout'
 
+riverctl spawn "dunst"
 riverctl spawn "kitty"
-riverctl spawn 'flatpak run app.zen_browser.zen'
+riverctl spawn 'zen-twilight'
 riverctl spawn "signal-desktop"
-riverctl spawn 'slstatus -s | /home/edvin/projects/creek/result/bin/creek -sao -nf 0x4c4f69 -nb 0xeff1f5 -ff 0x4c4f69 -fb 0x7287fd -fn "JetbrainsMono Nerd Font:size=14"'
+riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -sao -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0x89b4fa -fn "JetbrainsMono Nerd Font:size=14"'
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6

@@ -22,6 +22,8 @@
         file-roller
         libimobiledevice
         ifuse
+        stdmanpages
+        man-pages-posix
     ];
 
     programs.steam = {
