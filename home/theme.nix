@@ -60,7 +60,7 @@ in {
 
     qt = {
         enable = true;
-        platformTheme.name = "gtk3";
+        platformTheme.name = "qt5ct";
         style.name = "breeze";
     };
 }

@@ -2,6 +2,8 @@ riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_
 riverctl spawn "systemctl --user start xdg-desktop-portal-wlr"
 riverctl spawn "systemctl --user start xdg-desktop-portal-gtk"
 
+wlr-randr --output DP-1 --mode 3440x1440@144.001007
+
 wmenu_color="-M 11111b -m cdd6f4 -N 1e1e2e -n cdd6f4 -S b4befe -s 11111b -f 'JetbrainsMono Nerd Font 12'"
 
 riverctl map normal Super D spawn kitty
