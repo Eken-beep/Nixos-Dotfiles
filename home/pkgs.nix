@@ -26,7 +26,6 @@ in {
         shntool
         flacon
         audacity
-        lmms
 
         signal-desktop
         discord

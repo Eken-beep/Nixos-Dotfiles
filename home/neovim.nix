@@ -4,7 +4,6 @@ let
       # All the files to build the lua config from, gets mapped with readFile to create a list of multi-line strings
       ./neovim-lua/vim.lua
       ./neovim-lua/lualine.lua
-      ./neovim-lua/bufferline.lua
       ./neovim-lua/theme.lua
   ] builtins.readFile;
 
@@ -15,10 +14,10 @@ in {
     plugins = with pkgs.vimPlugins; [ 
       lualine-nvim
       lualine-lsp-progress
-      bufferline-nvim
       nvim-web-devicons
       nvim-tree-lua
       indent-blankline-nvim
+      # bufferline
 
       telescope-nvim
       telescope-symbols-nvim

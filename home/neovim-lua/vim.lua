@@ -39,6 +39,7 @@ g.loaded_netrwPlugin = 1
 A.nvim_set_option("clipboard","unnamed")
 
 opt.termguicolors = true
+opt.showtabline = 0
 
 require("nvim-treesitter.configs").setup {
     auto_install = false,
@@ -49,6 +50,12 @@ require("nvim-treesitter.configs").setup {
     indent = {
         enable = true
     }
+}
+
+require("treesitter-context").setup {
+    enable = true,
+    multiwindow = true,
+    trim_scope = 'outer',
 }
 
 require("nvim-tree").setup({
@@ -140,9 +147,6 @@ map('n', '<C-S-x>', ':q!<CR>')
 map('n', '<C-s>', ':w<CR>')
 map('n', '<C-t>e', ':NvimTreeOpen<CR>')
 
--- Tab modes
-map('n', '<C-l>', ':bprev<CR>')
-map('n', '<C-d>', ':bnext<CR>')
 map('n', '<C-g>', ':bdelete<CR>')
 
 -- Splits
@@ -153,6 +157,11 @@ map('n', '<leader><left>', '<C-w>h')
 map('n', '<leader><down>', '<C-w>j')
 map('n', '<leader><up>', '<C-w>k')
 map('n', '<leader><right>', '<C-w>l')
+
+-- Goto (gt) mappings
+vim.keymap.set('n', 'gtc', function()
+    require('treesitter-context').go_to_context(vim.v.count1)
+end, { silent = true })
 
 -- Treesitter
 local builtin = require('telescope.builtin')

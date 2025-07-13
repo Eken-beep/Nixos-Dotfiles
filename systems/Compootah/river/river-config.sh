@@ -14,8 +14,8 @@ riverctl map normal Super G close
 
 riverctl map normal Super+Control X exit
 
-riverctl map normal Super+Shift R spawn "wmenu-run -b -p run: $wmenu_color"
-riverctl map normal Super R spawn 'fuzzel'
+riverctl map normal Super R spawn "wmenu-run -b -p run: $wmenu_color"
+riverctl map normal Super+Shift R spawn 'fuzzel'
 
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
