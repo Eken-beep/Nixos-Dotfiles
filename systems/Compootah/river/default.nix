@@ -2,6 +2,7 @@
 {
     home.packages = [
         pkgs.creek
+        pkgs.sandbar
         pkgs.wlr-randr
         
         inputs.slstatus.defaultPackage.x86_64-linux
