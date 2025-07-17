@@ -2,7 +2,9 @@ riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_
 riverctl spawn "systemctl --user start xdg-desktop-portal-wlr"
 riverctl spawn "systemctl --user start xdg-desktop-portal-gtk"
 
-wmenu_color="-M 11111b -m cdd6f4 -N 1e1e2e -n cdd6f4 -S b4befe -s 11111b -f 'JetbrainsMono Nerd Font 12'"
+wmenu_color="-M 11111b -m cdd6f4 -N 1e1e2e -n cdd6f4 -S cba6f4 -s 11111b -f 'JetbrainsMono Nerd Font 12'"
+
+riverctl spawn '~/sysconfig/systems/x1c/river/swaylock.sh'
 
 riverctl map normal Super Return spawn kitty
 
@@ -10,8 +12,9 @@ riverctl map normal Super C close
 
 riverctl map normal Super+Control X exit
 
-riverctl map normal Super+Shift Space spawn "wmenu-run -b -p run: $wmenu_color"
-riverctl map normal Super Space spawn 'fuzzel'
+riverctl map normal Super Space spawn "wmenu-run -b -p run: $wmenu_color"
+
+riverctl map normal Super P spawn 'grim -g "$(slurp)" | wl-copy'
 
 riverctl map normal Super J focus-view next
 riverctl map normal Super K focus-view previous
@@ -131,8 +134,6 @@ riverctl map normal Super N spawn "mpc next"
 riverctl map normal Super+Shift N spawn "mpc prev"
 
 ###### Window rules
-riverctl rule-add -app-id 'float*' -title 'foo' float
-
 riverctl rule-add -app-id "*" ssd
 riverctl rule-add -app-id "bar" csd
 
@@ -144,14 +145,15 @@ riverctl hide-cursor when-typing enabled
 riverctl set-repeat 50 300
 
 # Maintain this file so that slstatus can get the current layout
-riverctl keyboard-layout -variant altgr-intl us
-riverctl spawn 'printf "US(altgr-intl)" > ~/keyboardlayout'
+riverctl keyboard-layout cust
+riverctl spawn 'printf "dvorak" > ~/keyboardlayout'
 
+riverctl spawn "dunst"
 riverctl spawn "kitty"
-riverctl spawn 'flatpak run app.zen_browser.zen'
+riverctl spawn 'zen-twilight'
 riverctl spawn "signal-desktop"
 # Custom slstatus here only
-riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -sao -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0xb4befe -fn "JetbrainsMono Nerd Font:size=14"'
+riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0x89b4fa -fn "JetbrainsMono Nerd Font:size=14"'
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6

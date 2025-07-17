@@ -6,7 +6,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot";
   
 # Remember to set this manually when needing an update
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_13;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_15;
   #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_6.override {
   #          argsOverride = {
   #              src = pkgs.fetchurl {

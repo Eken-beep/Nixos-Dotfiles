@@ -1,9 +1,13 @@
 { pkgs, inputs, colors, ... }:
 {
     home.packages = [
-        pkgs.creek
+        pkgs.wlr-randr
+        pkgs.wlopm
+        
+        pkgs.swayidle
         
         inputs.slstatus.defaultPackage.x86_64-linux
+        pkgs.creek
     ];
 
     wayland.windowManager.river = {
