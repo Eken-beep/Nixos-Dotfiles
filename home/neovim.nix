@@ -33,6 +33,7 @@ in {
       nvim-treesitter-context
 
       vimtex
+      render-markdown-nvim
       
       vim-eunuch
       glow-nvim

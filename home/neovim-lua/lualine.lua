@@ -42,9 +42,9 @@ require("lualine").setup {
 			empty,
 			{ "mode", separator = { left = "", right = "" }, right_padding = 2 },
 		},
-		lualine_b = { filename, "branch" },
+		lualine_b = { filename, "branch", "diff" },
 		lualine_c = { "fileformat", "diagnostics", "lsp_progress" },
-		lualine_x = {},
+		lualine_x = { "buffers", "g:coc_status" },
 		lualine_y = { "filetype", "progress" },
 		lualine_z = {
 			{

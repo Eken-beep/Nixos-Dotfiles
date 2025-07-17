@@ -13,6 +13,7 @@ riverctl map normal Super C close
 riverctl map normal Super+Control X exit
 
 riverctl map normal Super Space spawn "wmenu-run -b -p run: $wmenu_color"
+riverctl map normal Super+Shift Space spawn 'fuzzel'
 
 riverctl map normal Super P spawn 'grim -g "$(slurp)" | wl-copy'
 
@@ -152,8 +153,9 @@ riverctl spawn "dunst"
 riverctl spawn "kitty"
 riverctl spawn 'zen-twilight'
 riverctl spawn "signal-desktop"
-# Custom slstatus here only
-riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0x89b4fa -fn "JetbrainsMono Nerd Font:size=14"'
+
+#riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -sao -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0xb4befe -fn "JetbrainsMono Nerd Font:size=14"'
+riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | sandbar -font "JetbrainsMono Nerd Font:size=14" -active-fg-color "#1e1e2e" -active-bg-color "#89b4fa" -inactive-fg-color "#cdd6f4" -inactive-bg-color "#1e1e2e" -title-fg-color "#1e1e2e" -title-bg-color "#cba6f7" -urgent-fg-color "#1e1e2e" -urgent-bg-color "#f38ba8"'
 
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6

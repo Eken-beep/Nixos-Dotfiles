@@ -2,6 +2,7 @@
 {
     home.packages = [
         pkgs.creek
+        pkgs.sandbar
         pkgs.wlr-randr
         
         inputs.slstatus.defaultPackage.x86_64-linux
@@ -11,7 +12,7 @@
         enable = true;
         settings = {
             # So that this follows the system color config
-            background-color = "0x${colors.maroon}";
+            background-color = "0x${colors.pink}";
             border-color-focused = "0x${colors.blue}";
             border-color-unfocused = "0x${colors.text}";
             border-color-urgent = "0x${colors.red}";
