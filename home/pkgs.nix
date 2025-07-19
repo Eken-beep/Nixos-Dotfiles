@@ -14,11 +14,8 @@ in {
 
         # Gui stuff
         chromium
-        ladybird
 
         amberol
-        deadbeef
-        strawberry
         pkgs-old.cantata
         mpc-cli
         ncmpcpp
@@ -30,10 +27,6 @@ in {
         signal-desktop
         discord
         freetube
-
-        gimp
-        krita
-        kdePackages.kdenlive
 
         libreoffice-fresh
 
@@ -52,8 +45,6 @@ in {
 
         tex
         glow
-        jetbrains.idea-community
-        jetbrains.clion
         notepadqq
 
         # Stooooph

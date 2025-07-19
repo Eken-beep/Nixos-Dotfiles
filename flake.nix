@@ -226,7 +226,7 @@
                 ./systems/x1c/river
 
                 ./home/bash.nix
-                ./home/beets.nix
+                #./home/beets.nix
                 ./home/cava.nix
                 ./home/dunst.nix 
                 ./home/fastfetch.nix
@@ -238,7 +238,7 @@
                 ./home/mpv.nix
                 ./home/neovim.nix 
                 ./home/pkgs.nix
-                ./home/rofi.nix
+                #./home/rofi.nix
                 ./home/theme.nix
                 inputs.gBar.homeManagerModules.x86_64-linux.default 
                 inputs.catppuccin.homeModules.catppuccin

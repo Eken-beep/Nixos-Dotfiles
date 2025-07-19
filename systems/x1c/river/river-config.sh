@@ -2,6 +2,8 @@ riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_
 riverctl spawn "systemctl --user start xdg-desktop-portal-wlr"
 riverctl spawn "systemctl --user start xdg-desktop-portal-gtk"
 
+layout=rivercarro
+
 wmenu_color="-M 11111b -m cdd6f4 -N 1e1e2e -n cdd6f4 -S cba6f4 -s 11111b -f 'JetbrainsMono Nerd Font 12'"
 
 riverctl spawn '~/sysconfig/systems/x1c/river/swaylock.sh'
@@ -30,13 +32,24 @@ riverctl map normal Super+Shift I send-to-output next
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super A zoom
 
-# Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+# Layout
+riverctl map normal Super H send-layout-cmd $layout "main-ratio -0.05"
+riverctl map normal Super L send-layout-cmd $layout "main-ratio +0.05"
 
-# Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+riverctl map normal Super+Shift H send-layout-cmd $layout "main-count +1"
+riverctl map normal Super+Shift L send-layout-cmd $layout "main-count -1"
+
+riverctl map normal Super E toggle-float
+
+riverctl map normal Super F toggle-fullscreen
+riverctl map normal Super+Shift F send-layout-cmd $layout "main-location monocle"
+riverctl map normal Super Tab       send-layout-cmd $layout "main-location-cycle left,monocle"
+riverctl map normal Super+Shift Tab send-layout-cmd $layout "main-location-cycle right,monocle"
+
+riverctl map normal Super Up    send-layout-cmd $layout "main-location top"
+riverctl map normal Super Right send-layout-cmd $layout "main-location right"
+riverctl map normal Super Down  send-layout-cmd $layout "main-location bottom"
+riverctl map normal Super Left  send-layout-cmd $layout "main-location left"
 
 # Super+Alt+{H,J,K,L} to move views
 riverctl map normal Super+Alt H move left 100
@@ -87,16 +100,6 @@ done
 all_tags=$(((1 << 32) - 1))
 riverctl map normal Super 0 set-focused-tags $all_tags
 riverctl map normal Super+Shift 0 set-view-tags $all_tags
-
-riverctl map normal Super E toggle-float
-
-riverctl map normal Super F toggle-fullscreen
-
-# Super+{Up,Right,Down,Left} to change layout orientation
-riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super Right send-layout-cmd rivertile "main-location right"
-riverctl map normal Super Down  send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super Left  send-layout-cmd rivertile "main-location left"
 
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
@@ -157,5 +160,5 @@ riverctl spawn "signal-desktop"
 #riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | /home/edvin/projects/creek/result/bin/creek -sao -nf 0xcdd6f4 -nb 0x1e1e2e -ff 0x11111b -fb 0xb4befe -fn "JetbrainsMono Nerd Font:size=14"'
 riverctl spawn '/home/edvin/projects/slstatus/result/bin/slstatus -s | sandbar -font "JetbrainsMono Nerd Font:size=14" -active-fg-color "#1e1e2e" -active-bg-color "#89b4fa" -inactive-fg-color "#cdd6f4" -inactive-bg-color "#1e1e2e" -title-fg-color "#1e1e2e" -title-bg-color "#cba6f7" -urgent-fg-color "#1e1e2e" -urgent-bg-color "#f38ba8"'
 
-riverctl default-layout rivertile
-rivertile -view-padding 6 -outer-padding 6
+riverctl default-layout $layout
+rivercarro &

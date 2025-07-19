@@ -4,6 +4,7 @@
         pkgs.wlr-randr
         pkgs.wlopm
         pkgs.sandbar
+        pkgs.rivercarro
         
         pkgs.swayidle
         
