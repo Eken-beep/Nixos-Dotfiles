@@ -23,7 +23,7 @@ opt.breakindent = true
 opt.backspace = "indent,eol,start"
 
 opt.spell = true
-opt.spelllang = { 'en', 'sv' }
+opt.spelllang = { 'en', 'sv', 'de' }
 
 o.backup = false
 o.writebackup = false

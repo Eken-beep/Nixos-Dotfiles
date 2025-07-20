@@ -41,6 +41,10 @@ in {
 
     # Packages to expose to neovim, mostly language servers
     extraPackages = with pkgs; [
+      fd
+      lua54Packages.digestif
+      pstree
+
       nil
       haskell-language-server
       sumneko-lua-language-server
@@ -48,7 +52,6 @@ in {
       perl
       ccls
       rust-analyzer
-      lua54Packages.digestif
       jdt-language-server
       ocamlPackages.ocaml-lsp
       zls
