@@ -27,6 +27,7 @@ in {
         signal-desktop
         discord
         freetube
+        catgirl
 
         libreoffice-fresh
 
