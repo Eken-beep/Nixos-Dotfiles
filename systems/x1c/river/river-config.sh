@@ -29,6 +29,8 @@ riverctl map normal Super I focus-output next
 
 riverctl map normal Super+Shift I send-to-output next
 
+riverctl map normal Super+Control+Alt Return spawn "sh ~/sysconfig/desktop/scripts/swap_keyboard.sh"
+
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super A zoom
 

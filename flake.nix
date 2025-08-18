@@ -119,6 +119,9 @@
         #./desktop/gnome.nix
         #./desktop/xmonad.nix
 
+        ./systems/options.nix
+        ./systems/Compootah/config.nix
+
         home-manager.nixosModules.home-manager
         {
           home-manager.extraSpecialArgs = { inherit inputs;
@@ -188,11 +191,13 @@
         ./sys/users.nix
         ./sys/mpd.nix
 
-        ./systems/x1c/etc.nix
         ./systems/x1c/hardware-configuration.nix
 
         ./desktop/generic.nix
         ./desktop/wayland.nix
+
+        ./systems/options.nix
+        ./systems/x1c/config.nix
 
         home-manager.nixosModules.home-manager
         {

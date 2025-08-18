@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
+  console.keyMap = config.consoleKeymap;
+
   # Something
   security = {
     rtkit.enable = true;
@@ -10,6 +12,7 @@
   networking = {
     hostId = "356ffb56";
     firewall.checkReversePath = "loose";
+    firewall.enable = false;
     wireguard.enable = true;
     iproute2.enable = true;
   };
@@ -36,6 +39,14 @@
 
     resolved.enable = true;
     mullvad-vpn.enable = true;
+
+    tlp = {
+      enable = config.enableTlp;
+      settings = {
+        CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      };
+    };
   };
 
   programs.virt-manager.enable = true;

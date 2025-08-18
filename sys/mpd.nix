@@ -1,8 +1,10 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
     services.mpd = {
-        enable = true;
-        musicDirectory = "/mnt/data/media/music/lib";
+        enable = lib.mkIf (config.mpd.path != null) true;
+        musicDirectory = (if (config.mpd.path != null)
+                           then config.mpd.path
+                           else "");
         user = "edvin";
         extraConfig = ''
             audio_output {
