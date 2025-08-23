@@ -12,7 +12,6 @@
   networking = {
     hostId = "356ffb56";
     firewall.checkReversePath = "loose";
-    firewall.enable = false;
     wireguard.enable = true;
     iproute2.enable = true;
   };

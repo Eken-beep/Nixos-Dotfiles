@@ -5,7 +5,7 @@ let
     cursorSize = 32;
 in {
     # Dconf crashes without this when gtk is enabled, what???
-    home.packages = [ pkgs.dconf ];
+    home.packages = [ pkgs.dconf pkgs.darkly-qt5 pkgs.darkly ];
     home.pointerCursor = {
         name = cursorThemeName;
         package = cursorPackage;
@@ -60,7 +60,10 @@ in {
 
     qt = {
         enable = true;
-        platformTheme.name = "qt5ct";
-        style.name = "kvantum";
+        platformTheme.name = "qtct";
+        style = {
+            name = "Darkly";
+            package = pkgs.darkly-qt5;
+        };
     };
 }
