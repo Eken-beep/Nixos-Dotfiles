@@ -63,7 +63,7 @@ in {
         platformTheme.name = "qtct";
         style = {
             name = "Darkly";
-            package = pkgs.darkly-qt5;
+            package = [ pkgs.darkly-qt5 pkgs.darkly ];
         };
     };
 }

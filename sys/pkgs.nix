@@ -12,11 +12,7 @@
         gzip
         gcc
         btop
-        xdotool
-        piper
         xterm
-        qmk
-        qmk-udev-rules
         nautilus
         totem
         file-roller

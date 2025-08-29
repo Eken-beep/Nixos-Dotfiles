@@ -16,7 +16,7 @@ in {
         chromium
 
         amberol
-        pkgs-old.cantata
+        cantata
         mpc-cli
         ncmpcpp
         cuetools
@@ -27,7 +27,6 @@ in {
         signal-desktop
         discord
         freetube
-        catgirl
 
         libreoffice-fresh
 
@@ -38,7 +37,6 @@ in {
         nicotine-plus
 
         obs-studio
-        arduino
 
         picard
 
@@ -46,11 +44,11 @@ in {
 
         tex
         glow
-        notepadqq
 
         # Stooooph
+        nix-tree
+
         pamixer
-        swaylock
         imagemagick
         waypaper
         wmenu
@@ -59,9 +57,6 @@ in {
         slurp
         ydotool
         ripgrep
-
-        lxappearance 
-        libsForQt5.qt5ct
 
         winePackages.stableFull
         playerctl
@@ -87,7 +82,6 @@ in {
         (pkgs.fortune.override{ withOffensive = true; })
         figlet
         neo-cowsay
-        sqlitebrowser
 
         stdmanpages
         cabal-install

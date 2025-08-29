@@ -46,10 +46,4 @@
             XDG_CURRENT_DESKTOP = "river";
         };
     };
-
-    qt = {
-        enable = true;
-        platformTheme = "gtk2";
-        style = "adwaita";
-    };
 }
