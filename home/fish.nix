@@ -30,7 +30,7 @@
             '';
 
             fish_greeting = ''
-                fastfetch
+                fortune -o
             '';
         };
 
