@@ -67,7 +67,6 @@ in {
 
         socat
         jq
-        python3Full
         pfetch
         ranger
         unzip
